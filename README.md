@@ -3,7 +3,7 @@
 
 This is the library behind [Acrosync], which implements a large portion of the client-side of the (undocumented) rsync protocol, including the famous delta sync algorithm.
 
-[PhotoBackup], our iOS app for uploading photos and vidoes to computers, uses a slightly modified version of this library.
+[PhotoBackup], our iOS app for uploading photos and videos to computers, uses a slightly modified version of this library.
 
 ##Features
 - Talks the rsync protocol version 29 (rsync 2.6.4+) and version 30 (rsync 3.x.x). 
