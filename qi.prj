@@ -1,0 +1,19 @@
+[Source Files]
+rsync/rsync_client.cpp 
+rsync/rsync_entry.cpp 
+rsync/rsync_file.cpp 
+rsync/rsync_io.cpp 
+rsync/rsync_log.cpp 
+rsync/rsync_pathutil.cpp 
+rsync/rsync_socketutil.cpp 
+rsync/rsync_sshio.cpp 
+rsync/rsync_stream.cpp 
+rsync/rsync_timeutil.cpp 
+rsync/rsync_util.cpp 
+rsync/t_rsync_client.cpp 
+rsync/t_rsync_entry.cpp 
+rsync/t_rsync_fileutil.cpp 
+rsync/t_rsync_stream.cpp 
+[Initialization Code]
+[Finalization Code]
+[User-Defined Functions]
