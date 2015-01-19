@@ -32,7 +32,7 @@ Here the build system is written with [Qi-Make], a tool that we developed by ext
 
 ##License
 
-This library is licensed under the Reciprocal Public License.  If this license does not work for you, a commercial license is available for a one-time fee or on a subscription basis.  Contact <software@acrosync.com> for licensing details.
+This library is licensed under the Reciprocal Public License.  If this license does not work for you, a commercial license is available for a one-time fee or on a subscription basis.  Contact <software2015@acrosync.com> for licensing details.
 
 [acrosync]:https://acrosync.com
 [PhotoBackup]:https://acrosync.com/photobackup.html
