@@ -276,6 +276,7 @@ bool Stream::readMessageFlag(uint32_t *flag)
             ::memcpy(newBuffer, d_readBuffer, d_readBufferEnd);
             delete [] d_readBuffer;
             d_readBuffer = newBuffer;
+            d_readBufferSize = newSize;
         }
 
         int bytes = d_io->read(d_readBuffer + d_readBufferEnd, d_readDataLength);
