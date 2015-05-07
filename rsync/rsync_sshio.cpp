@@ -384,10 +384,10 @@ void SSHIO::checkError(int rc)
             std::string line;
             std::istringstream iss(message);
             while (getline(iss, line, '\n')) {
-                LOG_FATAL(SSH_STDERR) << line.c_str() << LOG_END
+                LOG_INFO(SSH_STDERR) << line.c_str() << LOG_END
             }
+            LOG_FATAL(SSH_CLOSED) << "The ssh channel has been unexpectedly closed" << LOG_END
         }
-        LOG_FATAL(SSH_CLOSED) << "The ssh channel has been unexpectedly closed" << LOG_END
         return;
     }
 
