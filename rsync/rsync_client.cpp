@@ -122,7 +122,7 @@ public:
         : d_source(source)
         , d_destination(destination)
         , d_mode(mode)
-        , d_modifiedTime(0)
+        , d_modifiedTime(-1)
         , d_startTime(::time(0))
     {
     }
@@ -131,7 +131,7 @@ public:
     {
         // Keep the file only if downloading completed or lasted a while (we dont' want to waste the bytes that have
         // been downloaded)
-        if (d_modifiedTime != 0 || (::time(0) - d_startTime) > 10) {
+        if (d_modifiedTime >= 0 || (::time(0) - d_startTime) > 10) {
             PathUtil::rename(d_source.c_str(), d_destination.c_str(), false);
             PathUtil::setModifiedTime(d_destination.c_str(), d_modifiedTime);
             PathUtil::setMode(d_destination.c_str(), d_mode);

@@ -63,7 +63,9 @@ int main(int argc, char *argv[])
 {
     TESTUTIL_INIT_RAND
 
-    if (argc < 6) {
+    if (argc < 7) {
+        ::printf("Usage: %s action server user password remote_dir local_dir\n", argv[0]);
+        ::printf("       where action is either 'download' or 'upload'\n");
         return 0;
     }
 
@@ -79,18 +81,21 @@ int main(int argc, char *argv[])
         return 0;
     }
 
-    const char *server = argv[1];
-    const char *user = argv[2];
-    const char *password = argv[3];
+    const char *action = argv[1];
+    const char *server = argv[2];
+    const char *user = argv[3];
+    const char *password = argv[4];
 
     // Make sure remoteDir ends with '/' to indicate it is a directory
-    std::string remoteDir = argv[4]; 
+    std::string remoteDir = argv[5]; 
     if (remoteDir.back() != '/') {
         remoteDir = remoteDir + "/";
     }
 
-    std::string localDir = PathUtil::join(PathUtil::getCurrentDirectory().c_str(), argv[5]);  
+    std::string localDir = PathUtil::join(PathUtil::getCurrentDirectory().c_str(), argv[6]);  
     std::string temporaryFile = PathUtil::join(PathUtil::getCurrentDirectory().c_str(), "acrosync.part");  
+
+    Log::setLevel(Log::Debug);
 
     try {
         SSHIO sshio;
@@ -98,7 +103,13 @@ int main(int argc, char *argv[])
 
         Client client(&sshio, "rsync", 32, &g_cancelFlag);
 
-        client.download(localDir.c_str(), remoteDir.c_str(), temporaryFile.c_str(), 0);
+        if (::strcasecmp(action, "download") == 0) {
+            client.download(localDir.c_str(), remoteDir.c_str(), temporaryFile.c_str(), 0);
+        } else if (::strcasecmp(action, "upload") == 0) {
+            client.upload(localDir.c_str(), remoteDir.c_str());
+        } else {
+            printf("Invalid action: %s\n", action);
+        }
     } catch (Exception &e) {
         LOG_ERROR(RSYNC_ERROR) << "Sync failed: " << e.getMessage() << LOG_END
     }
