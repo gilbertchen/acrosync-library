@@ -92,16 +92,13 @@ std::string base64_encode(char *data, int length)
     BUF_MEM *bptr = NULL;
     BIO_get_mem_ptr(b64, &bptr);
     
-    char *buff = static_cast<char*>(malloc(bptr->length));
-    memset(buff, 0, sizeof(char*));
-    memcpy(buff, bptr->data, bptr->length-1);
+    std::vector<char> buff(bptr->length, 0);
+
+    memcpy(&buff.front(), bptr->data, bptr->length-1);
     buff[bptr->length-1] = '\0';
-    
-    std::string encoded(buff);
-    
     BIO_free_all(b64);
-    free(buff);
-    return encoded;
+
+    return std::string(buff.data());
 }
     
 } // unnamed namespace
