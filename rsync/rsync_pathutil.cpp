@@ -129,12 +129,12 @@ void PathUtil::removeDirectoryRecursively(const char *fullPath)
     std::vector<Entry*> directories;
 
     listDirectory(fullPath, "", &files, &directories);
-    for (unsigned int i = 0; i < files.size(); ++i) {
+    for (size_t i = 0; i < files.size(); ++i) {
         remove(join(fullPath, files[i]->getPath()).c_str());
         delete files[i];
     }
 
-    for (unsigned int i = 0; i < directories.size(); ++i) {
+    for (size_t i = 0; i < directories.size(); ++i) {
         std::string path = join(fullPath, directories[i]->getPath());
         removeDirectoryRecursively(path.substr(0, path.size() - 1).c_str());
         delete directories[i];
@@ -145,7 +145,7 @@ void PathUtil::removeDirectoryRecursively(const char *fullPath)
 
 void PathUtil::standardizePath(std::string *path, char delimiter)
 {
-    for (int i = 0; i < path->size(); ++i) {
+    for (size_t i = 0; i < path->size(); ++i) {
         if ((*path)[i] == '\\' || (*path)[i] == '/') {
             (*path)[i] = delimiter;
         }
@@ -601,7 +601,7 @@ void PathUtil::listDirectory(const char *top, const char *relativePath, std::vec
     std::sort(currentList.begin(), currentList.end(), Entry::compareLocally);
 
     // First scan the files
-    for (unsigned int i = 0; i < currentList.size(); ++i) {
+    for (size_t i = 0; i < currentList.size(); ++i) {
         if (!currentList[i]->isDirectory()) {
             if (currentList[i]->isLink()) {
                 std::string target;
@@ -619,7 +619,7 @@ void PathUtil::listDirectory(const char *top, const char *relativePath, std::vec
     }
 
     // Next scan the directories in reverse order
-    for (int i = static_cast<int>(currentList.size() - 1); i >= 0; --i) {
+    for (size_t i = currentList.size(); i-- > 0; ) {
         if (!currentList[i]) {
             continue;
         }
