@@ -60,12 +60,12 @@ public:
         return size;
     }
 
-    virtual bool isReadable(int timeoutInMilliSeconds)
+    virtual bool isReadable(int /* timeoutInMilliSeconds */)
     {
         return true;
     }
 
-    virtual bool isWritable(int timeoutInMilliSeconds)
+    virtual bool isWritable(int /* timeoutInMilliSeconds */)
     {
         return true;
     }
@@ -199,7 +199,7 @@ void testReadWriteIndex()
         ASSERT(n == DATA[i]);
     }
 }
-int main(int argc, char *argv[])
+int main(int /* argc */, char ** /* argv */)
 {
     testReadWriteInt64();
     testReadWriteVariableInt32();

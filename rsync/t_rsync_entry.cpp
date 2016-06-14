@@ -29,7 +29,7 @@
 
 using namespace rsync;
 
-int main(int argc, char *argv[])
+int main(int /* argc */, char ** /* argv */)
 {
     TESTUTIL_INIT_RAND;
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     };
 
     std::vector<Entry*> list;
-    for (int i = 0; i < sizeof(unsortedFiles) / sizeof(unsortedFiles[0]); ++i) {
+    for (size_t i = 0; i < sizeof(unsortedFiles) / sizeof(unsortedFiles[0]); ++i) {
         Entry *entry =
             new Entry(unsortedFiles[i],
                       unsortedFiles[i][::strlen(unsortedFiles[i]) - 1] == '/', 0, 0, 0);
@@ -69,12 +69,12 @@ int main(int argc, char *argv[])
 
     std::sort(list.begin(), list.end(), Entry::compareGlobally);
 
-    for (unsigned int i = 0; i < list.size(); ++i) {
+    for (size_t i = 0; i < list.size(); ++i) {
         //printf("%s\n", list[i]->getPath());
         ASSERT(::strcmp(sortedFiles[i], list[i]->getPath()) == 0);
     }
 
-    for (unsigned int i = 0; i < list.size(); ++i) {
+    for (size_t i = 0; i < list.size(); ++i) {
         delete list[i];
     }
     return ASSERT_COUNT;
