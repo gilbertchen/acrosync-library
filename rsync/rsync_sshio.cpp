@@ -224,7 +224,7 @@ void SSHIO::getConnectInfo(std::string * /*username*/, std::string * /*password*
     LOG_FATAL(SSH_NOT_IMPLEMENTED) << "This 'getConnectInfo' method is never supposed to be called" << LOG_END
 }
     
-void SSHIO::createChannel(const char *remoteCommand, int *protocol)
+void SSHIO::createChannel(const char *remoteCommand, int * /* protocol */)
 {
     closeChannel();
 

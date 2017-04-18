@@ -20,7 +20,7 @@ void checkMemoryOnExit()
     }
 }
 
-void *allocateMemory(std::size_t size) throw (std::bad_alloc)
+void *allocateMemory(std::size_t size)
 {
     if (BLOCKS_IN_USE == -1) {
         BLOCKS_IN_USE = 0;
@@ -42,22 +42,22 @@ void releaseMemory(void *ptr)
 
 } // unnamed namespace
 
-void *operator new(std::size_t size) throw (std::bad_alloc)
+void *operator new(std::size_t size)
 {
     return allocateMemory(size);
 }
 
-void *operator new[] (std::size_t size) throw (std::bad_alloc)
+void *operator new[] (std::size_t size)
 {
     return allocateMemory(size);
 }
 
-void operator delete(void *ptr) throw()
+void operator delete(void *ptr) noexcept
 {
     releaseMemory(ptr);
 }
 
-void operator delete[](void *ptr) throw()
+void operator delete[](void *ptr) noexcept
 {
     releaseMemory(ptr);
 }
