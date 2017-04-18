@@ -5,7 +5,7 @@ This is the library behind [Acrosync], which implements a large portion of the c
 
 [PhotoBackup], our iOS app for uploading photos and videos to computers, uses a slightly modified version of this library.
 
-##Features
+## Features
 - Talks the rsync protocol version 29 (rsync 2.6.4+) and version 30 (rsync 3.x.x). 
 - Written in C++ and builds on Win32, Mac OS X, Linux, iOS, and Android.
 - The only dependencies are libssh2 and openssl.
@@ -30,7 +30,7 @@ The same build command works for Mac and Windows, but you will need to install o
 
 Here the build system is written with [Qi-Make], a tool that we developed by extending the basic syntax of make.  The file *qi/qi_build.h* contains actual rules for building intermediate objects and final test programs.  It should be fairly easy to make changes for your own build environments.
 
-##License
+## License
 
 This library is licensed under the Reciprocal Public License.  If this license does not work for you, a commercial license is available for a one-time fee or on a subscription basis.  Contact <software2015@acrosync.com> for licensing details.
 
