@@ -1,5 +1,5 @@
 # acrosync-library
-[Acrosync] is a new cross-platform rsync client for Windows/Max/iOS/Android that we built from scratch, without taking any code from the open source rsync project.  
+[Acrosync] is a new cross-platform rsync client for Windows/Mac/iOS/Android that we built from scratch, without taking any code from the open source rsync project.  
 
 This is the library behind [Acrosync], which implements a large portion of the client-side of the (undocumented) rsync protocol, including the famous delta sync algorithm.
 
